@@ -1,3 +1,11 @@
-<app-search-form></app-search-form>
-<app-filters></app-filters>
+<img class="logo" src="../../assets/logo.png" alt="logo" />
+<app-search-form
+  (searchButtonClick)="onSearchButtonClick($event)"
+  (filterButtonClick)="onFilterButtonClick()"
+></app-search-form>
 <app-auth></app-auth>
+<app-filters
+  *ngIf="isVisible"
+  (dateButtonClick)="onDateButtonClick()"
+  (countViewButtonClick)="onCountViewButtonClick()"
+></app-filters>

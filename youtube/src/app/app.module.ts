@@ -9,7 +9,6 @@ import { MainModule } from './main';
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule, AppRoutingModule, HeaderModule, MainModule],
-  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -1,1 +1,9 @@
-<app-card></app-card>
+<app-card
+  *ngFor="
+    let card of cards
+      | filter: searchValue
+      | sortByDate: isSortByDate
+      | sortByView: isSortByCountView
+  "
+  [card]="card"
+></app-card>

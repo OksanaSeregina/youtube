@@ -1,1 +1,15 @@
-<p>search-form works!</p>
+<div class="box-search">
+  <input
+    #inputEl
+    class="search"
+    type="search"
+    placeholder="What are you want to find out?"
+  />
+  <button (click)="onSearchClick(inputEl.value)" class="submit">Search</button>
+  <img
+    (click)="onFilterClick()"
+    class="search-settings"
+    src="../../../assets/search_settings.png"
+    alt="search_settings"
+  />
+</div>

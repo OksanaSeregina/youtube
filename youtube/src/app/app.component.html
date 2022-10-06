@@ -1,1 +1,11 @@
-<app-header></app-header> <app-main></app-main>
+<app-header
+  (searchButtonClick)="onSearchButtonClick($event)"
+  (dateButtonClick)="onDateButtonClick()"
+  (countViewButtonClick)="onCountViewButtonClick()"
+></app-header>
+<app-main
+  *ngIf="isVisible"
+  [isSortByDate]="isSortByDate"
+  [isSortByCountView]="isSortByCountView"
+  [searchValue]="searchValue"
+></app-main>
