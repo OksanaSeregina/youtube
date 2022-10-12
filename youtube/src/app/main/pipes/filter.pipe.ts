@@ -7,7 +7,7 @@ export class FilterPipe implements PipeTransform {
     if (!value) {
       return data;
     }
-    return data.filter((card) =>
+    return data?.filter((card) =>
       card.snippet.title.toUpperCase().includes(value.toUpperCase())
     );
   }

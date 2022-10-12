@@ -1,5 +1,5 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Component, Input, OnInit } from '@angular/core';
+import { Observable, of } from 'rxjs';
 import { DataService } from '../core';
 import { IItem } from './card';
 
@@ -8,10 +8,8 @@ import { IItem } from './card';
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss'],
 })
-export class MainComponent implements OnInit, OnDestroy {
-  private subscription: Subscription;
-
-  public cards: Array<IItem> = [];
+export class MainComponent implements OnInit {
+  public cards$: Observable<Array<IItem>>;
 
   @Input() public searchValue: string;
   @Input() public isSortByDate: boolean;
@@ -20,12 +18,6 @@ export class MainComponent implements OnInit, OnDestroy {
   constructor(private dataService: DataService) {}
 
   public ngOnInit(): void {
-    this.subscription = this.dataService.getItems().subscribe((cards) => {
-      this.cards = cards;
-    });
-  }
-
-  public ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    this.cards$ = this.dataService.getItems();
   }
 }
