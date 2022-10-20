@@ -1,10 +1,12 @@
-<app-card
-  *ngFor="
-    let card of cards$
-      | async
-      | filter: searchValue
-      | sortByDate: isSortByDate
-      | sortByView: isSortByCountView
-  "
-  [card]="card"
-></app-card>
+<ng-container *ngIf="searchService.isVisible">
+  <app-card
+    *ngFor="
+      let card of cards$
+        | async
+        | filter: searchService.searchValue
+        | sortByDate: searchService.isSortByDate
+        | sortByView: searchService.isSortByCountView
+    "
+    [card]="card"
+  ></app-card>
+</ng-container>

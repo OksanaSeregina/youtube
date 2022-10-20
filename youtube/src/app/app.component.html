@@ -1,14 +1,2 @@
-<app-header
-  (searchButtonClick)="onSearchButtonClick($event)"
-  (dateButtonClick)="onDateButtonClick()"
-  (countViewButtonClick)="onCountViewButtonClick()"
-></app-header>
-<app-main
-  *ngIf="isVisible"
-  [isSortByDate]="isSortByDate"
-  [isSortByCountView]="isSortByCountView"
-  [searchValue]="searchValue"
-></app-main>
-<!-- <app-not-found></app-not-found> -->
-<!-- <app-auth></app-auth> -->
-<!-- <app-details></app-details> -->
+<app-header *ngIf="isVisible$ | async"></app-header>
+<router-outlet></router-outlet>
