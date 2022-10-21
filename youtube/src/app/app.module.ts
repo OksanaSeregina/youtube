@@ -7,15 +7,9 @@ import { HeaderModule } from './header';
 import { MainModule } from './main';
 import { NotFoundComponent } from './not-found';
 import { AuthComponent } from './auth';
-import { DetailsComponent } from './details';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    NotFoundComponent,
-    AuthComponent,
-    DetailsComponent,
-  ],
+  declarations: [AppComponent, NotFoundComponent, AuthComponent],
   imports: [BrowserModule, AppRoutingModule, HeaderModule, MainModule],
   bootstrap: [AppComponent],
 })
