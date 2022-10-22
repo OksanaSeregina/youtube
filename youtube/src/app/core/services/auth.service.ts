@@ -1,21 +1,17 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
-import { Observable, Subject } from 'rxjs';
-import { startWith } from 'rxjs/operators';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { StorageService } from './storage.service';
 
 const MOCK_TOKEN = '565dfgwstg';
 
 @Injectable()
 export class AuthService {
-  private subject: Subject<boolean> = new Subject();
-  public isAuthenticated$: Observable<boolean>;
+  private subject: BehaviorSubject<boolean> = new BehaviorSubject(
+    this.isAuthenticated()
+  );
+  public isAuthenticated$: Observable<boolean> = this.subject.asObservable();
 
-  constructor(private storageService: StorageService, private router: Router) {
-    this.isAuthenticated$ = this.subject
-      .asObservable()
-      .pipe(startWith(this.isAuthenticated()));
-  }
+  constructor(private storageService: StorageService) {}
 
   public set({ login, password }: { login: string; password: string }): void {
     const isValid = login && password;
