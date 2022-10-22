@@ -1,13 +1,19 @@
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 import { CardBorderColorDirective, CardComponent } from './card';
 import { MainComponent } from './main.component';
-import { CommonModule } from '@angular/common';
 import { ServicesModule } from '../core';
-import { BrowserModule } from '@angular/platform-browser';
 import { PipesModule } from './pipes';
+import { DetailsComponent } from './details';
 
 @NgModule({
-  declarations: [CardComponent, MainComponent, CardBorderColorDirective],
+  declarations: [
+    CardComponent,
+    DetailsComponent,
+    MainComponent,
+    CardBorderColorDirective,
+  ],
   imports: [BrowserModule, CommonModule, ServicesModule, PipesModule],
   exports: [MainComponent],
 })

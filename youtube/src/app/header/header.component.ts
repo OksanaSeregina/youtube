@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { SearchService } from '../core';
 
 @Component({
   selector: 'app-header',
@@ -8,16 +9,12 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 export class HeaderComponent implements OnInit {
   public isVisible: boolean = false;
 
-  @Output() public searchButtonClick = new EventEmitter<string>();
-  @Output() public dateButtonClick = new EventEmitter();
-  @Output() public countViewButtonClick = new EventEmitter();
-
-  constructor() {}
+  constructor(private searchService: SearchService) {}
 
   ngOnInit(): void {}
 
   public onSearchButtonClick(value: string): void {
-    this.searchButtonClick.emit(value);
+    this.searchService.onSearchButtonClick(value);
   }
 
   public onFilterButtonClick(): void {
@@ -25,10 +22,10 @@ export class HeaderComponent implements OnInit {
   }
 
   public onDateButtonClick(): void {
-    this.dateButtonClick.emit();
+    this.searchService.onDateButtonClick();
   }
 
   public onCountViewButtonClick(): void {
-    this.countViewButtonClick.emit();
+    this.searchService.onCountViewButtonClick();
   }
 }

@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { filter, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -6,21 +9,18 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  public isVisible: boolean = false;
-  public isSortByDate: boolean = false;
-  public isSortByCountView: boolean = true;
-  public searchValue: string = '';
+  public isVisible$: Observable<boolean>;
 
-  public onSearchButtonClick(value: string): void {
-    this.searchValue = value;
-    this.isVisible = true;
-  }
-
-  public onDateButtonClick(): void {
-    this.isSortByDate = !this.isSortByDate;
-  }
-
-  public onCountViewButtonClick(): void {
-    this.isSortByCountView = !this.isSortByCountView;
+  constructor(private router: Router) {
+    this.isVisible$ = this.router.events.pipe(
+      filter((event) => event instanceof NavigationEnd),
+      map((data: NavigationEnd) => {
+        return (
+          data.url === '/' ||
+          data.url.includes('/catalog') ||
+          data.url.includes('/auth')
+        );
+      })
+    );
   }
 }

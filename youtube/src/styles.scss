@@ -7,10 +7,52 @@ body {
   margin: 0;
 }
 
-p {
+p,
+h3 {
   margin: 0;
 }
 
 input {
   border: none;
+}
+
+.btn-container {
+  text-align: end;
+  margin-top: 22px;
+
+  .transp-btn {
+    font-family: "Roboto", sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    text-decoration-line: underline;
+    color: #2f80ed;
+    border: none;
+    padding: 0;
+    margin-right: 14px;
+    cursor: pointer;
+  }
+
+  .blue-btn {
+    border: none;
+    background: #2f80ed;
+    border-radius: 5px;
+    filter: drop-shadow(2px 0px 4px #2f80ed);
+    font-family: "Roboto", sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    color: #ffffff;
+    padding: 8px 47px;
+    cursor: pointer;
+  }
+}
+
+:active,
+:hover,
+:focus {
+  outline: 0;
+  outline-offset: 0;
 }

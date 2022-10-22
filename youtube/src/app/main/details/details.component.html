@@ -1,0 +1,40 @@
+<ng-container *ngIf="card$ | async as card">
+  <div class="details">
+    <div class="back-btn"></div>
+    <div
+      class="img-details"
+      [style.background-image]="
+        'url(' + card.snippet.thumbnails.maxres.url + ')'
+      "
+    ></div>
+    <div [appCardBorderColor]="card?.snippet?.publishedAt" class="info-details">
+      <h3 class="title-info">
+        {{ card?.snippet?.title
+        }}<span class="date-info">{{
+          card?.snippet?.publishedAt | date: "fullDate"
+        }}</span>
+      </h3>
+
+      <p class="descr-title">Description:</p>
+      <p class="description">{{ card?.snippet?.description }}</p>
+      <ul class="icons">
+        <li class="item">
+          <img src="../../../assets/viewed.svg" alt="view" />
+          <span class="count">{{ card?.statistics?.viewCount }}</span>
+        </li>
+        <li class="item">
+          <img src="../../../assets/liked.svg" alt="like" />
+          <span class="count">{{ card?.statistics?.likeCount }}</span>
+        </li>
+        <li class="item">
+          <img src="../../../assets/dislike.svg" alt="dislike" />
+          <span class="count">{{ card?.statistics?.dislikeCount }}</span>
+        </li>
+        <li class="item">
+          <img src="../../../assets/copied.svg" alt="copy" />
+          <span class="count">{{ card?.statistics?.commentCount }}</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</ng-container>

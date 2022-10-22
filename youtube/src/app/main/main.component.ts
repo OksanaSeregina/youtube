@@ -1,6 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { DataService } from '../core';
+import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { DataService, SearchService } from '../core';
 import { IItem } from './card';
 
 @Component({
@@ -11,11 +11,10 @@ import { IItem } from './card';
 export class MainComponent implements OnInit {
   public cards$: Observable<Array<IItem>>;
 
-  @Input() public searchValue: string;
-  @Input() public isSortByDate: boolean;
-  @Input() public isSortByCountView: boolean;
-
-  constructor(private dataService: DataService) {}
+  constructor(
+    private dataService: DataService,
+    public searchService: SearchService
+  ) {}
 
   public ngOnInit(): void {
     this.cards$ = this.dataService.getItems();

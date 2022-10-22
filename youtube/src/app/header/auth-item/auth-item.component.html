@@ -1,0 +1,4 @@
+<ng-container *ngIf="isAuthenticated$ | async">
+  <p class="name-login">Your Name</p>
+  <button (click)="logout()">Log out</button>
+</ng-container>
