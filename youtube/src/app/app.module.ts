@@ -5,13 +5,14 @@ import { AppComponent } from './app.component';
 import { HeaderModule } from './header';
 import { MainModule } from './main';
 import { NotFoundComponent } from './not-found';
-import { GuardsModule } from './core';
+import { GuardsModule, InterceptorsModule } from './core';
 import { AuthModule } from './auth';
 
 @NgModule({
   declarations: [AppComponent, NotFoundComponent],
   imports: [
     BrowserModule,
+    InterceptorsModule,
     AppRoutingModule,
     HeaderModule,
     MainModule,

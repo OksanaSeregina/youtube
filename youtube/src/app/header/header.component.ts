@@ -1,20 +1,21 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { SearchService } from '../core';
+import { Component } from '@angular/core';
+import { DataService, SearchService } from '../core';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
   public isVisible: boolean = false;
 
-  constructor(private searchService: SearchService) {}
+  constructor(
+    private searchService: SearchService,
+    private dataService: DataService
+  ) {}
 
-  ngOnInit(): void {}
-
-  public onSearchButtonClick(value: string): void {
-    this.searchService.onSearchButtonClick(value);
+  public onSearch(value: string): void {
+    this.dataService.search(value);
   }
 
   public onFilterButtonClick(): void {
