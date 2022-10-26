@@ -21,7 +21,7 @@ export class DetailsComponent implements OnInit {
 
   ngOnInit(): void {
     const id: string = this.route.snapshot.params.id;
-    this.card$ = this.dataService.getItems().pipe(
+    this.card$ = this.dataService.data$.pipe(
       map((cards: IItem[]) => {
         const card: IItem = cards.find((card) => card.id === id);
         if (card) {

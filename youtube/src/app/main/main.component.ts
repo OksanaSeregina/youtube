@@ -17,6 +17,6 @@ export class MainComponent implements OnInit {
   ) {}
 
   public ngOnInit(): void {
-    this.cards$ = this.dataService.getItems();
+    this.cards$ = this.dataService.data$;
   }
 }
