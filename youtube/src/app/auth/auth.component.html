@@ -1,17 +1,65 @@
 <div class="login">
   <p class="title-login">Login</p>
-  <form #auth="ngForm" (ngSubmit)="onSubmit(auth)">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <div class="inputs-login">
       <p class="title-input">login</p>
-      <input ngModel maxlength="25" name="login" />
+      <input
+        [class.error]="login.invalid && (login.dirty || login.touched)"
+        formControlName="login"
+      />
+      <span
+        class="error-msg"
+        *ngIf="login.errors?.required && (login.dirty || login.touched)"
+        >*Please enter a login email</span
+      >
+      <span
+        class="error-msg"
+        *ngIf="login.errors?.notValid && (login.dirty || login.touched)"
+        >*The login email is invalid
+      </span>
     </div>
-    <div>
+    <div class="inputs-login">
       <p class="title-input">password</p>
-      <input ngModel type="password" maxlength="10" name="password" />
+      <input
+        [class.error]="password.invalid && (password.dirty || password.touched)"
+        formControlName="password"
+        type="password"
+      />
+      <span
+        class="error-msg"
+        *ngIf="
+          password.errors?.required && (password.dirty || password.touched)
+        "
+        >*Please enter a password</span
+      >
+      <span
+        class="error-msg"
+        *ngIf="
+          password.invalid &&
+          !password.errors?.required &&
+          (password.dirty || password.touched)
+        "
+        >*Your password isn't strong enough:
+
+        <ng-container *ngIf="password.errors?.length"
+          >at least 8 characters</ng-container
+        ><ng-container *ngIf="password.errors?.letterCase"
+          >a mixture of both uppercase and lowercase letters</ng-container
+        >
+        <ng-container *ngIf="password.errors?.numbers"
+          >a mixture of letters and numbers</ng-container
+        >
+        <ng-container *ngIf="password.errors?.symbols"
+          >inclusion of at least one special character, e.g., ! @ # ?
+          ]</ng-container
+        >
+      </span>
     </div>
     <div class="btn-container">
       <button type="button" class="transp-btn">Registration</button>
-      <button type="submit" class="blue-btn">Login</button>
+      <button type="submit" class="blue-btn" [disabled]="form.invalid">
+        Login
+      </button>
     </div>
   </form>
 </div>
