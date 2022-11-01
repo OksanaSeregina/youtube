@@ -1,0 +1,50 @@
+:host {
+  display: flex;
+  justify-content: center;
+  height: calc(100vh - 130px);
+  align-items: center;
+}
+
+.inputs-admin {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.admin {
+  width: 40%;
+  height: fit-content;
+  background: #f2f2f2;
+  border-radius: 17px;
+  padding: 0 24px;
+}
+
+.title-admin {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 21px;
+  margin-top: 28px;
+  margin-bottom: 11px;
+}
+
+.title-input {
+  font-size: 10px;
+  line-height: 12px;
+  color: #828282;
+  margin: 4px;
+}
+
+input {
+  width: 97%;
+  height: 37px;
+  background: #e0e0e0;
+  padding: 0 5px;
+  border: 1px solid #e0e0e0;
+}
+
+.blue-btn {
+  margin-bottom: 33px;
+}
+
+.blue-btn[disabled] {
+  opacity: 0.5;
+}

@@ -1,31 +1,21 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map, switchMap, tap } from 'rxjs/operators';
-import { Observable, BehaviorSubject } from 'rxjs';
-import { IItem } from '../../main';
+import { map, switchMap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 const API_URL = 'https://www.googleapis.com/youtube/v3';
 export const API_KEY = '[API_KEY]';
 
 @Injectable()
 export class DataService {
-  private valueSubject: BehaviorSubject<string> = new BehaviorSubject('');
-  public data$: Observable<Array<IItem>>;
+  constructor(private http: HttpClient) {}
 
-  constructor(private http: HttpClient) {
-    this.data$ = this.valueSubject.asObservable().pipe(
-      switchMap((value: string) => {
-        return this.getSearch(value).pipe(
-          switchMap((data) =>
-            this.getVideos(data).pipe(map((value) => value.items))
-          )
-        );
-      })
+  public get(value: string = '') {
+    return this.getSearch(value).pipe(
+      switchMap((data) =>
+        this.getVideos(data).pipe(map((value) => value.items))
+      )
     );
-  }
-
-  public search(value: string): void {
-    this.valueSubject.next(value);
   }
 
   private getSearch(value: string): Observable<any> {

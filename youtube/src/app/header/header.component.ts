@@ -1,21 +1,22 @@
-import { Component } from '@angular/core';
-import { DataService, SearchService } from '../core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { CardsFacade, DataService, SearchService } from '../core';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent {
   public isVisible: boolean = false;
 
   constructor(
     private searchService: SearchService,
-    private dataService: DataService
+    private state: CardsFacade
   ) {}
 
   public onSearch(value: string): void {
-    this.dataService.search(value);
+    this.state.searchCards(value);
   }
 
   public onFilterButtonClick(): void {

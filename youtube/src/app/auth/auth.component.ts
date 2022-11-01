@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import {
   AbstractControl,
   FormBuilder,
@@ -12,6 +12,7 @@ import { loginValidator, passwordValidator } from './validators';
   selector: 'app-auth',
   templateUrl: './auth.component.html',
   styleUrls: ['./auth.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AuthComponent implements OnInit {
   public form: FormGroup;
@@ -40,7 +41,6 @@ export class AuthComponent implements OnInit {
 
   public onSubmit(): void {
     const { login, password } = this.form.getRawValue();
-    console.log(this.login);
     this.authService.set({ login, password });
   }
 }

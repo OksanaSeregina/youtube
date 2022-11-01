@@ -1,0 +1,28 @@
+<div class="admin">
+  <p class="title-admin">Create new card</p>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="inputs-admin">
+      <p class="title-input">Title</p>
+      <input formControlName="title" />
+    </div>
+    <div class="inputs-admin">
+      <p class="title-input">Discription</p>
+      <input formControlName="description" />
+    </div>
+    <div class="inputs-admin">
+      <p class="title-input">Img</p>
+      <input formControlName="img" />
+    </div>
+    <div class="inputs-admin">
+      <p class="title-input">Link video</p>
+      <input formControlName="video" />
+    </div>
+    <div class="inputs-admin">
+      <p class="title-input">Date of creation</p>
+      <input formControlName="date" />
+    </div>
+    <div class="btn-container">
+      <button class="blue-btn">Create card</button>
+    </div>
+  </form>
+</div>

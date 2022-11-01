@@ -5,19 +5,22 @@ import { AppComponent } from './app.component';
 import { HeaderModule } from './header';
 import { MainModule } from './main';
 import { NotFoundComponent } from './not-found';
-import { GuardsModule, InterceptorsModule } from './core';
+import { AppStoreModule, GuardsModule, InterceptorsModule } from './core';
 import { AuthModule } from './auth';
+import { AdminModule } from './admin';
 
 @NgModule({
   declarations: [AppComponent, NotFoundComponent],
   imports: [
     BrowserModule,
     InterceptorsModule,
-    AppRoutingModule,
     HeaderModule,
     MainModule,
     GuardsModule,
     AuthModule,
+    AdminModule,
+    AppStoreModule,
+    AppRoutingModule,
   ],
   bootstrap: [AppComponent],
 })

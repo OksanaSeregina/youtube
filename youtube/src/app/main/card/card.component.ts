@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IItem } from './models';
 
@@ -6,13 +6,12 @@ import { IItem } from './models';
   selector: 'app-card',
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CardComponent implements OnInit {
+export class CardComponent {
   @Input() public card: IItem;
 
   constructor(private route: ActivatedRoute, private router: Router) {}
-
-  ngOnInit(): void {}
 
   public onCardClick(): void {
     const id: string = this.card.id;

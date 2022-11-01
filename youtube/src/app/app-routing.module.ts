@@ -4,6 +4,7 @@ import { AuthComponent } from './auth';
 import { NotFoundComponent } from './not-found';
 import { DetailsComponent, MainComponent } from './main';
 import { AuthGuard } from './core';
+import { AdminComponent } from './admin';
 
 export const routes: Routes = [
   {
@@ -20,6 +21,7 @@ export const routes: Routes = [
         path: 'catalog/:id',
         component: DetailsComponent,
       },
+      { path: 'admin', component: AdminComponent },
     ],
   },
   { path: 'auth', component: AuthComponent },

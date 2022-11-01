@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
@@ -8,6 +8,7 @@ import { AuthService } from '../../core';
   selector: 'app-auth-item',
   templateUrl: './auth-item.component.html',
   styleUrls: ['./auth-item.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AuthItemComponent implements OnInit {
   public isAuthenticated$: Observable<boolean>;
@@ -18,7 +19,9 @@ export class AuthItemComponent implements OnInit {
     this.isAuthenticated$ = this.authService.isAuthenticated$.pipe(
       tap((value: boolean) => {
         if (value) {
-          this.router.navigate(['/catalog']);
+          const url: string[] =
+            this.router.url === '/auth' ? ['/catalog'] : [this.router.url];
+          this.router.navigate(url);
         }
       })
     );

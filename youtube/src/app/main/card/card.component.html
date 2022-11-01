@@ -1,26 +1,27 @@
 <div
-  [appCardBorderColor]="card?.snippet?.publishedAt"
+  *ngIf="card"
   class="card"
+  [appCardBorderColor]="card.snippet.publishedAt"
   [style.background-image]="'url(' + card.snippet.thumbnails.medium.url + ')'"
 >
   <ul class="icons">
     <li class="item">
       <img src="../../../assets/viewed.svg" alt="view" />
-      <span class="count">{{ card?.statistics?.viewCount }}</span>
+      <span class="count">{{ card.statistics.viewCount }}</span>
     </li>
     <li class="item">
       <img src="../../../assets/liked.svg" alt="like" />
-      <span class="count">{{ card?.statistics?.likeCount }}</span>
+      <span class="count">{{ card.statistics.likeCount }}</span>
     </li>
     <li class="item">
       <img src="../../../assets/dislike.svg" alt="dislike" />
-      <span class="count">{{ card?.statistics?.favoriteCount }}</span>
+      <span class="count">{{ card?.statistics.favoriteCount }}</span>
     </li>
     <li class="item">
       <img src="../../../assets/copied.svg" alt="copy" />
-      <span class="count">{{ card?.statistics?.commentCount }}</span>
+      <span class="count">{{ card.statistics.commentCount }}</span>
     </li>
   </ul>
-  <h3 class="title-card">{{ card?.snippet?.title }}</h3>
+  <h3 class="title-card">{{ card.snippet.title }}</h3>
   <button (click)="onCardClick()" class="more">more...</button>
 </div>

@@ -1,22 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { DataService, SearchService } from '../core';
-import { IItem } from './card';
+import { CardsFacade, SearchService } from '../core';
+import { IItem } from '../main';
 
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MainComponent implements OnInit {
-  public cards$: Observable<Array<IItem>>;
+  public cards$: Observable<Readonly<Array<IItem>>>;
 
   constructor(
-    private dataService: DataService,
-    public searchService: SearchService
+    public searchService: SearchService,
+    private state: CardsFacade
   ) {}
 
   public ngOnInit(): void {
-    this.cards$ = this.dataService.data$;
+    this.cards$ = this.state.combinedCards$;
   }
 }

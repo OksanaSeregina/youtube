@@ -9,7 +9,7 @@ import {
 import { Observable } from 'rxjs';
 import { API_KEY } from '../services';
 
-const TOKEN = 'AIzaSyAtVhBUdUZ61K2msX_6653T7lpTQxzlJ4c';
+const TOKEN = 'AIzaSyBmhSe0VZgLzJAVoHQGgPJxfeV9xWfFc2c';
 
 @Injectable()
 export class HeaderInterceptor implements HttpInterceptor {
